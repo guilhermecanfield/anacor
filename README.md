@@ -146,3 +146,59 @@ Resíduo Padronizado Ajustado = (residuo padronizado) / sqrt( [ (1 - (somatorio 
 ## Mapa Perceptual
 
 ![alt text](png/image-2.png)
+
+# Análise de Correspondência Múltipla
+
+A Análise de Correspondência Múltipla (ACM) tem o objetivo de analisar a associação entre mais de duas variáveis categóricas.
+
+**Ela, basicamente, apresenta a mesma lógica da análise definida na ANACOR!!**
+
+- Só entram na ACM as variáveis que apresentam associação estatísticamente significante com pelo menos uma outra variável.
+- Assim como na ANACOR, o primeiro passo é o teste χ2, porém ele ocorre para cada par de variável. Caso alguma delas não apresente associação com nenhuma outra, ela não entra na ACM.
+
+Como não é possível gerar uma tabela de contingência com mais de duas variáveis, é necessária uma etapa a mais na análise de correspondência múltipla, a elaboração de matrizes auxiliares. Ela pode ser executada através de dois métodos, ficando a escolha deste a critério do analista.
+
+## Método 1:
+- Matriz Binária Z -> Gera Coordenandas Padrão:
+
+A matriz binária é obtida pela transformação das variáveis categóricas em variáveis binárias (em dummies), ou seja, valores 0 ou 1. 
+- Supondo que a matriz binária Z seja a tabela de contingência da Anacor, é possível obter a inércia principal parcial das dimensões, autovalores, autovetores e, portanto, as coordenadas no mapa perceptual dessa matriz;
+- Quantidade de dimensões (λ²) = J – Q, em que “J” é a quantidade total de categorias em todas as variáveis e “Q” a quantidade de variáveis.
+
+``Inércia Principal Totla = J - Q / Q``
+
+*Exemplo com n=7*
+
+| ID | Variável A |         |         | Variável B |         |         |         | Variável C |         |         |         |
+|----|------------|---------|---------|------------|---------|---------|---------|------------|---------|---------|---------|
+|    | Categ. 1   | Categ. 2 |         | Categ. 1   | Categ. 2 | Categ. 3 |         | Categ. 1   | Categ. 2 | Categ. 3 | Categ. 4 |
+| 1  | 1          | 0       |         | 0          | 0       | 1       |         | 1          | 0       | 0       | 0       |
+| 2  | 0          | 1       |         | 0          | 1       | 0       |         | 0          | 1       | 0       | 0       |
+| 3  | 0          | 1       |         | 1          | 0       | 0       |         | 0          | 0       | 1       | 0       |
+| 4  | 1          | 0       |         | 0          | 0       | 1       |         | 0          | 0       | 0       | 1       |
+| 5  | 0          | 1       |         | 0          | 1       | 0       |         | 1          | 0       | 0       | 0       |
+| 6  | 1          | 0       |         | 1          | 0       | 0       |         | 0          | 1       | 0       | 0       |
+| 7  | 1          | 0       |         | 1          | 0       | 1       |         | 0          | 0       | 1       | 1       |
+
+## Método 2:
+- Matriz de Burt -> Gera Coordenadas Principais:
+
+A matriz de Burt é definida como: B = Z' . Z 
+- É possível combinar em uma única matriz o cruzamento de todos os pares variáveis e suas categorias, obtendo, desta forma, uma matriz que contém as frequências absolutas observadas para todos os cruzamentos 
+- Ao considerar a matriz de Burt como uma tabela de contingência, é possível realizar uma Anacor e obter as coordenadas das categorias das variáveis
+
+*Obtida com base no exemplo anterior*
+
+|          | Variável A       |               | Variável B       |               |               | Variável C       |               |               |               |
+|----------|-------------------|---------------|-------------------|---------------|---------------|-------------------|---------------|---------------|---------------|
+|          | Categ. A1        | Categ. A2     | Categ. B1        | Categ. B2     | Categ. B3     | Categ. C1        | Categ. C2     | Categ. C3     | Categ. C4     |
+| Categ. A1 | 4               | 0             | 1                | 2             | 1             | 2                | 0             | 1             | 1             |
+| Categ. A2 | 0               | 3             | 1                | 0             | 2             | 1                | 2             | 1             | 1             |
+| Categ. B1 | 1               | 1             | 0               | 3             | 0             | 0                | 1             | 0             | 0             |
+| Categ. B2 | 2               | 1             | 1                | 0             | 0             | 2                | 1             | 0             | 1             |
+| Categ. B3 | 1               | 0             | 0                | 1             | 0             | 0                | 2             | 1             | 0             |
+| Categ. C1 | 2               | 0             | 0                | 1             | 1             | 0                | 0             | 1             | 0             |
+| Categ. C2 | 1               | 1             | 1                | 1             | 2             | 0                | 0             | 2             | 1             |
+| Categ. C3 | 1               | 1             | 0                | 0             | 0             | 1                | 0             | 0             | 2             |
+| Categ. C4 | 1               | 1             | 0                | 0             | 1             | 0                | 0             | 0             | 1             |
+

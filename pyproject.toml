@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "anacor"
+version = "0.1.0"
+description = ""
+authors = ["Guilherme Canfield <guilherme.canfield87@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pandas = "^2.2.3"
+plotly = "^5.24.1"
+prince = "^0.13.1"
+statsmodels = "^0.14.4"
+seaborn = "^0.13.2"
+openpyxl = "^3.1.5"
+nbformat = "^5.10.4"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
